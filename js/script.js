@@ -69,6 +69,7 @@ btn.onclick = () => {
   } else if (btn.innerText.toLowerCase() == "clear") {
     timerStatus.classList.remove("active");
     timerStatus.classList.remove("active_clear");
+    resumeBtn.classList.remove("active");
 
     refreshTimer();
     btn.innerText = "start";
@@ -84,7 +85,7 @@ resumeBtn.onclick = () => {
 
 function startStopwatch() {
   if (btn.innerText.toLowerCase() != "stop") return;
-  
+
   updateDisplay();
   setTimeout(() => startStopwatch(), 1000);
 }
