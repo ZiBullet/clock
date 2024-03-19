@@ -44,10 +44,11 @@ function changeTab(el, el2) {
 }
 
 let dispHour = document.querySelector(".stopwatch__hours"),
-dispMin = document.querySelector(".stopwatch__minutes"),
-dispSec = document.querySelector(".stopwatch__seconds");
+  dispMin = document.querySelector(".stopwatch__minutes"),
+  dispSec = document.querySelector(".stopwatch__seconds");
 
 let btn = document.querySelector(".stopwatch__btn"),
+  resumeBtn = document.querySelector(".stopwatch__btn_resume"),
   timerStatus = document.querySelector(".tabsLink__span");
 
 let timerSec = -1,
@@ -59,11 +60,11 @@ btn.onclick = () => {
     btn.innerText = "stop";
     timerStatus.classList.add("active");
     timerStatus.classList.remove("active_clear");
-
     startStopwatch();
   } else if (btn.innerText.toLowerCase() == "stop") {
     timerStatus.classList.remove("active");
     timerStatus.classList.add("active_clear");
+    resumeBtn.classList.add("active");
     btn.innerText = "clear";
   } else if (btn.innerText.toLowerCase() == "clear") {
     timerStatus.classList.remove("active");
@@ -75,13 +76,17 @@ btn.onclick = () => {
   }
 };
 
+resumeBtn.onclick = () => {
+  btn.innerText = "stop";
+  startStopwatch();
+  resumeBtn.classList.remove("active");
+};
+
 function startStopwatch() {
   if (btn.innerText.toLowerCase() != "stop") return;
   
   updateDisplay();
-  setTimeout(() => {
-    startStopwatch();
-  }, 1000);
+  setTimeout(() => startStopwatch(), 1000);
 }
 
 function updateDisplay() {

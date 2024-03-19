@@ -247,6 +247,13 @@ body {
     display: flex;
     margin-bottom: 50px;
 }
+
+.stopwatch__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
 .stopwatch__btn {
     padding: 10px 15px;
     background: #fff;
@@ -259,6 +266,27 @@ body {
     outline: none;
 }
 
+.stopwatch__btn_resume {
+    display: none;
+    opacity: 0;
+    padding: 10px 15px;
+    background: rgba(27, 117, 27, 0.562);
+    border-radius: 30px;
+    border: none;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #191d22;
+    transition: .3s, opacity .3s .3s;
+    cursor: pointer;
+    outline: none;
+}
+.stopwatch__btn_resume.active {
+    display: block;
+    opacity: 1;
+}
+.stopwatch__btn_resume:hover {
+    background: rgba(27, 117, 27, 0.8);
+}
 /* Добавляем keyframe на уроке*/
 
 @keyframes opacity {
