@@ -8,15 +8,11 @@ function clock() {
   let time = new Date(),
     milliseconds = time.getMilliseconds(),
     seconds = time.getSeconds(),
-    minutes = time.getMinutes() * 6,
-    hours = time.getHours() * 30;
-  sec.style = `transform:rotate(${
-    0.006 * (seconds * 1000 + milliseconds)
-  }deg);`;
-  min.style = `transform:rotate(${
-    minutes + seconds
-  }deg); transition:1s linear;`;
-  hour.style = `transform:rotate(${hours + minutes}deg); transition:1s linear;`;
+    minutes = time.getMinutes(),
+    hours = time.getHours();
+  sec.style = `transform:rotate(${0.006 * (seconds * 1000 + milliseconds)}deg);`;
+  min.style = `transform:rotate(${6 * minutes}deg); transition: 1s linear;`;
+  hour.style = `transform:rotate(${30 * hours}deg); transition: 1s linear;`;
 
   hoursNumber.innerHTML =
     time.getHours() < 10 ? "0" + time.getHours() : time.getHours();
